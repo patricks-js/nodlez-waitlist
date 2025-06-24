@@ -1,0 +1,18 @@
+name: Nodlez Waitlist
+
+services:
+  db:
+    image: bitnami/postgresql:16
+    container_name: nodlez-waitlist-db
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - nodlez-waitlist-db-data:/bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=nodlez_waitlist_db
+
+volumes:
+  nodlez-waitlist-db-data:
