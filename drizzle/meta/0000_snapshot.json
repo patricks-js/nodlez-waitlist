@@ -1,5 +1,5 @@
 {
-  "id": "400d499a-d7d6-4021-8d5e-6da83bcbc025",
+  "id": "e52a50c6-dbe3-40f9-beb0-80892c11b30b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -14,11 +14,25 @@
           "primaryKey": true,
           "notNull": true
         },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "email": {
           "name": "email",
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "interest_reason": {
+          "name": "interest_reason",
+          "type": "interest_reason",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'student'"
         },
         "created_at": {
           "name": "created_at",
@@ -45,7 +59,17 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.interest_reason": {
+      "name": "interest_reason",
+      "schema": "public",
+      "values": [
+        "student",
+        "project",
+        "both"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
