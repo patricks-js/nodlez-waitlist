@@ -7,7 +7,7 @@ type Roadmap = {
 export const roadmap: Roadmap[] = [
   {
     title: "Geração de flashcards",
-    subtitle: "Melhoria na criação de flashcards",
+    subtitle: "Transforme textos em flashcards inteligentes",
     state: "em progresso",
   },
   {
