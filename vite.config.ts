@@ -7,5 +7,9 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [tailwindcss(), tsConfigPaths(), tanstackStart()],
+  plugins: [
+    tailwindcss(),
+    tsConfigPaths(),
+    tanstackStart({ target: "vercel" }),
+  ],
 });

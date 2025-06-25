@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
+    "build": "vite build",
+    "start": "bun run .output/server/index.mjs",
     "format": "biome check --write",
     "ui": "bunx --bun shadcn@latest",
     "db:generate": "drizzle-kit generate",
