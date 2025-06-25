@@ -22,11 +22,9 @@ export const joinWaitlist = createServerFn({ method: "POST" })
       .where(eq(waitlist.email, data.email));
     if (emailAlreadyJoined) throw new Error("Email already joined");
 
-    await db
-      .insert(waitlist)
-      .values({
-        email: data.email,
-        name: data.name,
-        interestReason: data.interestReason,
-      });
+    await db.insert(waitlist).values({
+      email: data.email,
+      name: data.name,
+      interestReason: data.interestReason,
+    });
   });
