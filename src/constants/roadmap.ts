@@ -35,4 +35,9 @@ export const roadmap: Roadmap[] = [
     subtitle: "Resumos automáticos de materiais longos",
     state: "em planejamento",
   },
+  {
+    title: "Aplicativo mobile",
+    subtitle: "Acesso fácil e rápido no celular",
+    state: "em planejamento",
+  },
 ];
