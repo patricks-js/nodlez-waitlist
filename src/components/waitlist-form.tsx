@@ -19,7 +19,9 @@ import {
 
 function FieldInfo({ field }: { field: AnyFieldApi }) {
   return (
-    <p className="text-destructive text-xs">
+    <p className="mt-1 text-destructive text-xs">
+      {" "}
+      {/* Usando text-destructive do Shadcn */}
       {field.state.meta.isTouched && !field.state.meta.isValid ? (
         <em>{field.state.meta.errors.map((e) => e.message).join(", ")}</em>
       ) : null}
@@ -83,21 +85,23 @@ export function WaitlistForm() {
         e.stopPropagation();
         form.handleSubmit();
       }}
-      className="w-full max-w-md space-y-4"
+      className="w-full space-y-4"
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <form.Field
           name="name"
           children={(field) => (
-            <div className="space-y-3">
-              <Label htmlFor={field.name}>Nome</Label>
+            <div className="space-y-1">
+              <Label htmlFor={field.name} className="sr-only">
+                Nome
+              </Label>
               <Input
                 id={field.name}
                 name={field.name}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
-                placeholder="John Doe"
+                placeholder="Seu nome"
               />
               <FieldInfo field={field} />
             </div>
@@ -106,15 +110,17 @@ export function WaitlistForm() {
         <form.Field
           name="email"
           children={(field) => (
-            <div className="space-y-3">
-              <Label htmlFor={field.name}>Email</Label>
+            <div className="space-y-1">
+              <Label htmlFor={field.name} className="sr-only">
+                Email
+              </Label>
               <Input
                 id={field.name}
                 name={field.name}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
-                placeholder="johndoe@email.com"
+                placeholder="seu@email.com"
               />
               <FieldInfo field={field} />
             </div>
@@ -124,29 +130,33 @@ export function WaitlistForm() {
       <form.Field
         name="interestReason"
         children={(field) => (
-          <div className="space-y-3">
-            <Label>Razão de interesse</Label>
+          <div className="space-y-1">
+            <Label htmlFor={field.name} className="sr-only">
+              Razão de interesse
+            </Label>
             <Select
               name={field.name}
               onValueChange={field.handleChange}
               defaultValue={field.state.value}
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Escolha uma opção" />
+                <SelectValue placeholder="Por que você está interessado?" />
               </SelectTrigger>
               <SelectContent className="w-full">
                 <SelectGroup>
                   <SelectItem value="student">Sou estudante</SelectItem>
                   <SelectItem value="project">
-                    Interessado no projeto
+                    interessado no projeto
                   </SelectItem>
                   <SelectItem value="both">Ambos</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
+            <FieldInfo field={field} />
           </div>
         )}
       />
+
       <form.Subscribe
         selector={(state) => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
@@ -157,7 +167,7 @@ export function WaitlistForm() {
               disabled={!canSubmit}
               className="w-full"
             >
-              {isSubmitting ? "Entrando..." : "Entrar na lista de espera!"}
+              {isSubmitting ? "Entrando..." : "Entrar na lista de espera"}
             </Button>
           </>
         )}
