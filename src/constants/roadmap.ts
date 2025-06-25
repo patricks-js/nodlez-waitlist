@@ -16,13 +16,23 @@ export const roadmap: Roadmap[] = [
     state: "em progresso",
   },
   {
-    title: "Aceitar outros tipos de conteúdo",
+    title: "Open Source",
+    subtitle: "Projeto aberto para colaboração e transparência",
+    state: "em progresso",
+  },
+  {
+    title: "Aceitar outros tipos de materiais",
     subtitle: "Geração de conteúdo a partir de PDF, DOCX, etc.",
     state: "em planejamento",
   },
   {
     title: "Assistente de IA para estudar",
     subtitle: "Obtenha ajuda inteligente para qualquer conteúdo",
+    state: "em planejamento",
+  },
+  {
+    title: "Geração de resumos",
+    subtitle: "Resumos automáticos de materiais longos",
     state: "em planejamento",
   },
 ];
