@@ -2,6 +2,7 @@ import { type AnyFieldApi, useForm } from "@tanstack/react-form";
 import { useRouter } from "@tanstack/react-router";
 import confetti from "canvas-confetti";
 import { useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { z } from "zod/v4";
 import type { interestReason } from "@/db/schema/waitlist";
 import { joinWaitlist } from "@/functions";
@@ -48,17 +49,27 @@ export function WaitlistForm() {
       onChange: waitlistFormSchema,
     },
     onSubmit: async ({ value }) => {
-      await joinWaitlist({
-        data: {
-          name: value.name,
-          email: value.email,
-          interestReason:
-            value.interestReason as (typeof interestReason)[number],
-        },
-      });
+      try {
+        await joinWaitlist({
+          data: {
+            name: value.name,
+            email: value.email,
+            interestReason:
+              value.interestReason as (typeof interestReason)[number],
+          },
+        });
 
-      form.reset();
-      router.invalidate();
+        form.reset();
+        router.invalidate();
+      } catch (error) {
+        if (
+          error instanceof Error &&
+          error.message === "Email already joined"
+        ) {
+          toast.error("Email já registrado na lista!");
+          throw error;
+        }
+      }
     },
   });
 
