@@ -1,14 +1,14 @@
 type Roadmap = {
   title: string;
   subtitle: string;
-  state: "em progresso" | "em planejamento";
+  state: "em progresso" | "em planejamento" | "concluído";
 };
 
 export const roadmap: Roadmap[] = [
   {
     title: "Geração de flashcards",
     subtitle: "Transforme textos em flashcards inteligentes",
-    state: "em progresso",
+    state: "concluído",
   },
   {
     title: "Geração de quizzes",
@@ -23,7 +23,7 @@ export const roadmap: Roadmap[] = [
   {
     title: "Aceitar outros tipos de materiais",
     subtitle: "Geração de conteúdo a partir de PDF, DOCX, etc.",
-    state: "em planejamento",
+    state: "em progresso",
   },
   {
     title: "Assistente de IA para estudar",
